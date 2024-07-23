@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Timer</title>
+</head>
+<body>
+  <button id="startButton">START</button>
+  <input type="number" id="inputField" placeholder="Enter countdown time (seconds)">
+  <script>
+    document.getElementById('startButton').addEventListener('click', () => {
+      const timeEntered = parseInt(inputField.value);
+
+      // Error handling (optional):
+      if (isNaN(timeEntered) || timeEntered <= 0) {
+        alert("Please enter a valid countdown time (positive number of seconds)");
+        return;  // Exit the function early if input is invalid
+      }
+
+      let remainingTime = timeEntered;
+      let intervalId = setInterval(() => {
+        if (remainingTime === 0) {
+          clearInterval(intervalId);
+          alert("Time is up!");
+        } else {
+          console.log(remainingTime);
+          remainingTime--;
+        }
+      }, 1000); // Execute every 1 second
+    });
+  </script>
+</body>
+</html>
